@@ -1,0 +1,151 @@
+body {
+  background: #fff0f5;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.showings-admin {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Form ve inputlar */
+.showings-admin form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.showings-admin input,
+.showings-admin select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  flex: 1;
+  min-width: 150px;
+}
+
+.showings-admin button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.showings-admin button:hover {
+  transform: translateY(-2px);
+}
+
+/* Edit / Delete */
+.showings-admin .edit-btn {
+  background-color: #007bff;
+  color: white;
+  margin-right: 4px;
+}
+
+.showings-admin .edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.showings-admin .delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.showings-admin .delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+/* Listeleme */
+.showings-admin ul {
+  list-style: none;
+  padding: 0;
+}
+
+.showings-admin li {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* Ticket panel */
+.ticket-panel {
+  margin-top: 20px;
+  padding: 16px;
+  background: linear-gradient(135deg, #fff5f5, #ffe4e1);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.ticket-panel button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.ticket-panel button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* SeatSelector grid */
+.seat-selector {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.seat {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.seat:hover:not(.sold) {
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.seat.selected {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+}
+
+.seat.sold {
+  background-color: #dc3545;
+  color: white;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .showings-admin form {
+    flex-direction: column;
+  }
+
+  .seat-selector {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

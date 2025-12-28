@@ -1,0 +1,145 @@
+body {
+  background: #fff0f5; /* pastel pembe */
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.movies-page {
+  width: 100%;        /* tam ekran genişliği */
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Yeni Film Ekleme Formu */
+.add-movie-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.add-movie-form input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  flex: 1;
+  min-width: 150px;
+}
+
+.add-movie-form button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+}
+
+.add-movie-form button:hover {
+  background-color: #218838;
+}
+
+/* Grid ve kartlar */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.movie-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.movie-card img {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.movie-info {
+  padding: 8px;
+  text-align: center;
+}
+
+.movie-actions {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.movie-actions button:first-child {
+  background-color: #007bff;
+  color: white;
+}
+
+.movie-actions button:first-child:hover {
+  background-color: #0056b3;
+}
+
+.movie-actions button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+.movie-actions button:last-child:hover {
+  background-color: #a71d2a;
+}
+
+/* Edit modal */
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.edit-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.edit-content input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .add-movie-form {
+    flex-direction: column;
+  }
+}
