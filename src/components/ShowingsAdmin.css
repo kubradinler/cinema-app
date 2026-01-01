@@ -1,151 +1,163 @@
-body {
-  background: #fff0f5;
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 .showings-admin {
-  width: 100%;
-  max-width: 100%;
+  padding: 20px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 24px;
-  box-sizing: border-box;
 }
 
-/* Form ve inputlar */
-.showings-admin form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.back-button {
+  background: #d63384;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
   margin-bottom: 20px;
 }
 
-.showings-admin input,
-.showings-admin select {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  flex: 1;
-  min-width: 150px;
-}
-
-.showings-admin button {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-
-.showings-admin button:hover {
-  transform: translateY(-2px);
-}
-
-/* Edit / Delete */
-.showings-admin .edit-btn {
-  background-color: #007bff;
-  color: white;
-  margin-right: 4px;
-}
-
-.showings-admin .edit-btn:hover {
-  background-color: #0056b3;
-}
-
-.showings-admin .delete-btn {
-  background-color: #dc3545;
-  color: white;
-}
-
-.showings-admin .delete-btn:hover {
-  background-color: #a71d2a;
-}
-
-/* Listeleme */
-.showings-admin ul {
-  list-style: none;
-  padding: 0;
-}
-
-.showings-admin li {
-  background-color: #fff;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-/* Ticket panel */
-.ticket-panel {
-  margin-top: 20px;
-  padding: 16px;
-  background: linear-gradient(135deg, #fff5f5, #ffe4e1);
+.showing-form-section {
+  background: #f8f9fa;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-bottom: 30px;
 }
 
-.ticket-panel button {
-  margin-top: 12px;
-  padding: 10px 16px;
-  border-radius: 6px;
-  border: none;
-  background-color: #28a745;
+.showing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+}
+
+.showing-form select,
+.showing-form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.showing-form button {
+  background: #4CAF50;
   color: white;
-  font-weight: bold;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.ticket-panel button:hover {
-  background-color: #218838;
-  transform: translateY(-2px);
+.showings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
-/* SeatSelector grid */
-.seat-selector {
+.showing-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.showing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.showing-card.selected {
+  border-color: #d63384;
+  background: #fff0f5;
+}
+
+.showing-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.showing-poster {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.showing-title h3 {
+  margin: 0;
+  color: #333;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-badge.available {
+  background: #4CAF50;
+  color: white;
+}
+
+.seat-selector-container {
+  margin: 30px 0;
+}
+
+.seats-grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  gap: 6px;
-  margin-top: 12px;
+  gap: 5px;
+  max-width: 500px;
+  margin: 20px auto;
 }
 
 .seat {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: #f9f9f9;
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-
-.seat:hover:not(.sold) {
-  transform: scale(1.1);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-.seat.selected {
-  background-color: #28a745;
-  color: white;
   font-weight: bold;
 }
 
+.seat.available {
+  background: #e0e0e0;
+}
+
+.seat.available:hover {
+  background: #4CAF50;
+  color: white;
+}
+
+.seat.selected {
+  background: #4CAF50;
+  color: white;
+}
+
 .seat.sold {
-  background-color: #dc3545;
+  background: #f44336;
   color: white;
   cursor: not-allowed;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .showings-admin form {
-    flex-direction: column;
-  }
+.action-buttons {
+  margin-top: 20px;
+}
 
-  .seat-selector {
-    grid-template-columns: repeat(5, 1fr);
-  }
+.purchase-btn {
+  background: #d63384;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.purchase-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }

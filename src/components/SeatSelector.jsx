@@ -1,48 +1,55 @@
-import React from "react";
 import "./SeatSelector.css";
 
-export default function SeatSelector({
-  capacity,
-  soldSeats = [],
-  selectedSeats = [],
-  onSelectSeat,
+export default function SeatSelector({ 
+  capacity, 
+  soldSeats, 
+  selectedSeats, 
+  onSelectSeat, 
   isAdmin = false,
-  onCancelSeat,
+  onCancelSeat 
 }) {
   const seats = Array.from({ length: capacity }, (_, i) => i + 1);
 
-  const handleClick = (seat, isSold) => {
-    if (isSold && isAdmin) {
-      const ok = window.confirm("Are you sure you want to cancel this seat?");
-      if (ok) onCancelSeat(seat);
+  const handleSeatClick = (seat) => {
+    if (soldSeats.includes(seat)) {
+      if (isAdmin && onCancelSeat) {
+        onCancelSeat(seat);
+      }
       return;
     }
+    
+    const newSelected = selectedSeats.includes(seat)
+      ? selectedSeats.filter(s => s !== seat)
+      : [...selectedSeats, seat];
+    
+    onSelectSeat(newSelected);
+  };
 
-    if (!isSold) {
-      if (selectedSeats.includes(seat)) {
-        onSelectSeat(selectedSeats.filter(s => s !== seat)); // seçimi kaldır
-      } else {
-        onSelectSeat([...selectedSeats, seat]); // seçimi ekle
-      }
-    }
+  const getSeatClass = (seat) => {
+    if (soldSeats.includes(seat)) return "seat sold";
+    if (selectedSeats.includes(seat)) return "seat selected";
+    return "seat available";
   };
 
   return (
     <div className="seat-selector">
-      {seats.map((seat) => {
-        const isSold = soldSeats.includes(seat);
-        const isSelected = selectedSeats.includes(seat);
-
-        return (
+      <div className="screen">🎬 SCREEN 🎬</div>
+      <div className="seats-grid">
+        {seats.map(seat => (
           <button
             key={seat}
-            className={`seat ${isSold ? "sold" : isSelected ? "selected" : ""}`}
-            onClick={() => handleClick(seat, isSold)}
+            className={getSeatClass(seat)}
+            onClick={() => handleSeatClick(seat)}
+            title={`Seat ${seat}`}
+            disabled={soldSeats.includes(seat) && !isAdmin}
           >
             {seat}
           </button>
-        );
-      })}
+        ))}
+      </div>
+      <div className="seat-info">
+        Selected seats: {selectedSeats.length > 0 ? selectedSeats.join(", ") : "None"}
+      </div>
     </div>
   );
 }
